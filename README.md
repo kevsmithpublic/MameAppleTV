@@ -18,7 +18,10 @@ Don't expect to see this on the App Store any time soon as Apple doesn't allow e
 
 As promised, here is a zip of the xcodeproject, tested with GM build of the Apple TV and Xcode 7.1 final.
 
-Download Xcode project : http://bit.ly/1LQybD0
+See it in action
+
+https://www.youtube.com/watch?v=VlO4nQGNFKU
+
 
 To get this to work you need 
 
@@ -27,9 +30,10 @@ To get this to work you need
 - Drag the rom zip file into the resource folder in the xcode project so they are copied to the device (Should appear as files in Build Phases/ Copy Bundle resources)
 
 
-Includes initial support for AppleTV remote if no controller available.
+Includes initial support for AppleTV - WIP, playing game to see what works
 
 Areas that need work
 
 - Sound - fix arm64 assembler which has been commented out
 - Apple TV remote support
+

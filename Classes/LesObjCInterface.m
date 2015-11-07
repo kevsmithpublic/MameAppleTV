@@ -83,12 +83,11 @@ extern int iOS_inGame;
         usingTVRemote=true;
         gameController = [[GCController controllers] objectAtIndex:0];
         gameController.microGamepad.allowsRotation=true;
+        gameController.microGamepad.reportsAbsoluteDpadValues=TRUE;
         gameController.controllerPausedHandler = ^(GCController *controller)
         {
-            if (gameController.microGamepad.buttonX.isPressed) {
-                iOS_exitGame = 1;
-                selectPressed=0;
-            }
+            iOS_exitGame = 1;
+            selectPressed=0;
         };
     }
 }
@@ -114,15 +113,19 @@ extern int iOS_inGame;
 
         if (usingTVRemote) {
 
-            if (gameController.microGamepad.buttonX.isPressed && gameController.microGamepad.buttonA.isPressed)
+            if (gameController.microGamepad.buttonX.isPressed && gameController.microGamepad.buttonA.isPressed && selectPressed<30)
             {
                 selectPressed++;
-                if (selectPressed<30){
+                if (selectPressed<10){
+                    printf("Select");
                     gp2x_pad_status |= GP2X_SELECT;
                     btnStates[BTN_SELECT] = BUTTON_PRESS;
+                    return;
                 } else {
+                    printf("Start");
                     gp2x_pad_status |= GP2X_START;
                     btnStates[BTN_START] = BUTTON_PRESS;
+                    return;
                 }
                 
                 return;
@@ -143,22 +146,55 @@ extern int iOS_inGame;
                 return;
             }
             
-            if (gameController.microGamepad.dpad.left.value>=.95) {
+            const float sensitivity=.5;
+            
+            if (gameController.microGamepad.dpad.left.value>=sensitivity &&
+                gameController.microGamepad.dpad.up.value>=sensitivity) {
+                printf("Up/Left %f",gameController.microGamepad.dpad.left.value);
+                gp2x_pad_status |= GP2X_LEFT;
+                gp2x_pad_status |= GP2X_UP;
+                return;
+            }
+ 
+            if (gameController.microGamepad.dpad.right.value>=sensitivity &&
+                gameController.microGamepad.dpad.up.value>=sensitivity) {
+                printf("Up/Right %f",gameController.microGamepad.dpad.left.value);
+                gp2x_pad_status |= GP2X_LEFT;
+                gp2x_pad_status |= GP2X_UP;
+                return;
+            }
+            if (gameController.microGamepad.dpad.right.value>=sensitivity &&
+                gameController.microGamepad.dpad.down.value>=sensitivity) {
+                printf("Down/Right %f",gameController.microGamepad.dpad.left.value);
+                gp2x_pad_status |= GP2X_LEFT;
+                gp2x_pad_status |= GP2X_UP;
+                return;
+            }
+            if (gameController.microGamepad.dpad.left.value>=sensitivity &&
+                gameController.microGamepad.dpad.down.value>=sensitivity) {
+                printf("Down/Left %f",gameController.microGamepad.dpad.left.value);
+                gp2x_pad_status |= GP2X_LEFT;
+                gp2x_pad_status |= GP2X_UP;
+                return;
+            }
+            
+            if (gameController.microGamepad.dpad.left.value>=sensitivity) {
                 printf("Left %f",gameController.microGamepad.dpad.left.value);
                 gp2x_pad_status |= GP2X_LEFT;
                 return;
             }
-            if (gameController.microGamepad.dpad.right.value>=.95) {
+            //
+            if (gameController.microGamepad.dpad.right.value>=sensitivity) {
                 printf("Right %f",gameController.microGamepad.dpad.right.value);
                 gp2x_pad_status |= GP2X_RIGHT;
                 return;
             }
-            if (gameController.microGamepad.dpad.up.value>=.95) {
+            if (gameController.microGamepad.dpad.up.value>=sensitivity) {
                 printf("Up");
                 gp2x_pad_status |= GP2X_UP;
                 return;
             }
-            if (gameController.microGamepad.dpad.down.value>=.95) {
+            if (gameController.microGamepad.dpad.down.value>=sensitivity) {
                 printf("Down");
                 gp2x_pad_status |= GP2X_DOWN;
                 return;
