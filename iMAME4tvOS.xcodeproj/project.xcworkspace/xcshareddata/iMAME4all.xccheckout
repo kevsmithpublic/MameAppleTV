@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>0D22A527-5A3A-4ED0-83A1-E3910DACB10B</string>
+	<key>IDESourceControlProjectName</key>
+	<string>iMAME4all</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>4BC5A8DE-52E5-42E0-8772-2C35859EA750</key>
+		<string>http://imame4all.googlecode.com/svn</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>MAME4all/trunk/iMAME4all.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>4BC5A8DE-52E5-42E0-8772-2C35859EA750</key>
+		<string>../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectRepositoryRootDictionary</key>
+	<dict>
+		<key>4BC5A8DE-52E5-42E0-8772-2C35859EA750</key>
+		<string>http://imame4all.googlecode.com/svn</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>http://imame4all.googlecode.com/svn/MAME4all/trunk/iMAME4all.xcodeproj</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>4BC5A8DE-52E5-42E0-8772-2C35859EA750</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.subversion</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>4BC5A8DE-52E5-42E0-8772-2C35859EA750</string>
+			<key>IDESourceControlWCCName</key>
+			<string>imame4all-read-only</string>
+		</dict>
+	</array>
+</dict>
+</plist>
