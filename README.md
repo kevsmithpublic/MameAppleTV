@@ -7,9 +7,13 @@ The tvOS app is based on Les Bird's code I found here :- http://www.lesbird.com/
 
 The original work is based on iMAME4all which is a iOS universal app, port of MAME 0.37b5 emulator by Nicola Salmoria for all iOS devices (iPad HD, iPhone 4G , iPod touch and older) based on GP2X, WIZ MAME4ALL 2.5 by Franxis. 
 
-YouTube videos of it running
+Videos
 
-https://www.youtube.com/watch?v=VlO4nQGNFKU
+Initial Test
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=VlO4nQGNFKU" target="_blank"><img src="http://img.youtube.com/vi/VlO4nQGNFKU/0.jpg" alt="Mame AppleTV" width="240" height="180" border="10" /></a>
+
+Apple TV - remote
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=zLY2Rkw6Rxk" target="_blank"><img src="http://img.youtube.com/vi/zLY2Rkw6Rxk/0.jpg" alt="Mame AppleTV" width="240" height="180" border="10" /></a>
 
 
 To get this to work you need 
