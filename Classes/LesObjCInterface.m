@@ -113,10 +113,10 @@ extern int iOS_inGame;
 
         if (usingTVRemote) {
 
-            if (gameController.microGamepad.buttonX.isPressed && gameController.microGamepad.buttonA.isPressed && selectPressed<30)
+            if (gameController.microGamepad.buttonX.isPressed && gameController.microGamepad.buttonA.isPressed && selectPressed<20)
             {
                 selectPressed++;
-                if (selectPressed<10){
+                if (selectPressed<5){
                     printf("Select");
                     gp2x_pad_status |= GP2X_SELECT;
                     btnStates[BTN_SELECT] = BUTTON_PRESS;
@@ -127,27 +127,25 @@ extern int iOS_inGame;
                     btnStates[BTN_START] = BUTTON_PRESS;
                     return;
                 }
-                
                 return;
             }
                 
             
             if (gameController.microGamepad.buttonA.isPressed) {
-                printf("A");
-                gp2x_pad_status |= GP2X_B;
-                btnStates[BTN_B] = BUTTON_PRESS;
-                return;
+                printf("X");
+                gp2x_pad_status |= GP2X_X;
+                btnStates[BTN_X] = BUTTON_PRESS;
             }
             
             if (gameController.microGamepad.buttonX.isPressed) {
-                printf("X-B");
-                gp2x_pad_status |= GP2X_A;
-                btnStates[BTN_A] = BUTTON_PRESS;
-                return;
+                printf("B");
+                gp2x_pad_status |= GP2X_B;
+                btnStates[BTN_B] = BUTTON_PRESS;
             }
             
-            const float sensitivity=.5;
+            const float sensitivity=.1;
             
+            /*
             if (gameController.microGamepad.dpad.left.value>=sensitivity &&
                 gameController.microGamepad.dpad.up.value>=sensitivity) {
                 printf("Up/Left %f",gameController.microGamepad.dpad.left.value);
@@ -177,27 +175,28 @@ extern int iOS_inGame;
                 gp2x_pad_status |= GP2X_UP;
                 return;
             }
+             */
             
             if (gameController.microGamepad.dpad.left.value>=sensitivity) {
                 printf("Left %f",gameController.microGamepad.dpad.left.value);
                 gp2x_pad_status |= GP2X_LEFT;
-                return;
+                //return;
             }
             //
             if (gameController.microGamepad.dpad.right.value>=sensitivity) {
                 printf("Right %f",gameController.microGamepad.dpad.right.value);
                 gp2x_pad_status |= GP2X_RIGHT;
-                return;
+                //return;
             }
             if (gameController.microGamepad.dpad.up.value>=sensitivity) {
                 printf("Up");
                 gp2x_pad_status |= GP2X_UP;
-                return;
+                //return;
             }
             if (gameController.microGamepad.dpad.down.value>=sensitivity) {
                 printf("Down");
                 gp2x_pad_status |= GP2X_DOWN;
-                return;
+                //return;
             }
             
             return;
