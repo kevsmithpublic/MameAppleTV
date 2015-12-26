@@ -149,7 +149,6 @@ int overscanTVOUT = 1;
 	    											 	        	   					
 			// Internal display is 0, external is 1.
 			externalScreen = [[[UIScreen screens] objectAtIndex:1] retain];
-				
 			screenModes =  [@[[externalScreen currentMode]] retain];
 					
 			// Allow user to choose from available screen-modes (pixel-sizes).
