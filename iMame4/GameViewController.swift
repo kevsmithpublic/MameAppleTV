@@ -29,22 +29,22 @@ class GameViewController: UIViewController {
         // create and add a light to the scene
         let lightNode = SCNNode()
         lightNode.light = SCNLight()
-        lightNode.light!.type = SCNLightTypeOmni
+        lightNode.light!.type = SCNLight.LightType.omni
         lightNode.position = SCNVector3(x: 0, y: 10, z: 10)
         scene.rootNode.addChildNode(lightNode)
         
         // create and add an ambient light to the scene
         let ambientLightNode = SCNNode()
         ambientLightNode.light = SCNLight()
-        ambientLightNode.light!.type = SCNLightTypeAmbient
-        ambientLightNode.light!.color = UIColor.darkGrayColor()
+        ambientLightNode.light!.type = SCNLight.LightType.ambient
+        ambientLightNode.light!.color = UIColor.darkGray
         scene.rootNode.addChildNode(ambientLightNode)
         
         // retrieve the ship node
-        let ship = scene.rootNode.childNodeWithName("ship", recursively: true)!
+        let ship = scene.rootNode.childNode(withName: "ship", recursively: true)!
         
         // animate the 3d object
-        ship.runAction(SCNAction.repeatActionForever(SCNAction.rotateByX(0, y: 2, z: 0, duration: 1)))
+        ship.runAction(SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: 2, z: 0, duration: 1)))
         
         // retrieve the SCNView
         let scnView = self.view as! SCNView
@@ -59,24 +59,24 @@ class GameViewController: UIViewController {
         scnView.showsStatistics = true
         
         // configure the view
-        scnView.backgroundColor = UIColor.blackColor()
+        scnView.backgroundColor = UIColor.black
         
         // add a tap gesture recognizer
-        let tapGesture = UITapGestureRecognizer(target: self, action: "handleTap:")
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(GameViewController.handleTap(_:)))
         var gestureRecognizers = [UIGestureRecognizer]()
         gestureRecognizers.append(tapGesture)
         if let existingGestureRecognizers = scnView.gestureRecognizers {
-            gestureRecognizers.appendContentsOf(existingGestureRecognizers)
+            gestureRecognizers.append(contentsOf: existingGestureRecognizers)
         }
         scnView.gestureRecognizers = gestureRecognizers
     }
     
-    func handleTap(gestureRecognize: UIGestureRecognizer) {
+    func handleTap(_ gestureRecognize: UIGestureRecognizer) {
         // retrieve the SCNView
         let scnView = self.view as! SCNView
         
         // check what nodes are tapped
-        let p = gestureRecognize.locationInView(scnView)
+        let p = gestureRecognize.location(in: scnView)
         let hitResults = scnView.hitTest(p, options: nil)
         // check that we clicked on at least one object
         if hitResults.count > 0 {
@@ -88,19 +88,19 @@ class GameViewController: UIViewController {
             
             // highlight it
             SCNTransaction.begin()
-            SCNTransaction.setAnimationDuration(0.5)
+            SCNTransaction.animationDuration = 0.5
             
             // on completion - unhighlight
-            SCNTransaction.setCompletionBlock {
+            SCNTransaction.completionBlock = {
                 SCNTransaction.begin()
-                SCNTransaction.setAnimationDuration(0.5)
+                SCNTransaction.animationDuration = 0.5
                 
-                material.emission.contents = UIColor.blackColor()
+                material.emission.contents = UIColor.black
                 
                 SCNTransaction.commit()
             }
             
-            material.emission.contents = UIColor.redColor()
+            material.emission.contents = UIColor.red
             
             SCNTransaction.commit()
         }
